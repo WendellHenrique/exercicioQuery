@@ -1,0 +1,16 @@
+@NamedQuery (name="pedido.status", query="select COUNT(p.statusPedido) FROM Pedido p WHERE p.statusPedido = :statusPedido and p.usuario = :usuario")
+
+public class query1{
+
+    @query("select COUNT(p.statusPedido) FROM Pedido p WHERE p.statusPedido in ("RESPONDIDO", "BLOQUEADO") ")
+    
+    public void q2{
+        Query query = manager.createNamedQuery("pedido.status");
+
+        query.setParameter("statusPedido", "BLOQUEADO")
+        List<stat> status = query.getResultList();
+
+        query.setParameter("usuario", "ANTONIO")
+        List<user> usuario = query.getResultList();
+    }
+}
